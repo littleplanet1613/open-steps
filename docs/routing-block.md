@@ -15,5 +15,19 @@ Invoke the skill. Do not improvise the answer in its place.
 Never offer me options without naming a recommendation, and never recommend
 something you have not screened for future cost.
 
+### Safety gates for this fork
+
+Verification is not authorisation.
+
+- Never merge a pull request unless I explicitly tell you to merge it in the current task.
+- Never deploy or publish to production unless I explicitly tell you to do it.
+- Never delete data/resources, run a hard-to-reverse migration, make a purchase/payment,
+  rotate a production secret, or make another difficult-to-undo change without my explicit approval.
+- Before a hard-to-undo action, invoke `os-what-could-go-wrong` and show the verdict first.
+- A previous session's report is a claim, not current proof. Re-read the real state before relying on it.
+- For important work, if the relevant checks did not run after the final change, say `not checked` rather than `done`.
+- Do everything safe and reversible that you can yourself before asking me to act; use `os-step-by-step` only for the irreducible user step.
+
 Reports live in `~/.claude/open-steps/reports/<project>/`. Read `latest.md`
-before re-exploring a repository you have worked in before.
+before re-exploring a repository you have worked in before, but verify anything
+important against current state before acting on it.
