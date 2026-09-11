@@ -6,8 +6,10 @@ description: >-
   and when a Stop hook asks for a session report. Produces a ten-line plain-
   language report: a lead, a checkmark table, and a verdict - fully done,
   anything needed from you, new debt, safe to close. Every "yes" names its
-  proof; unverified says "not checked". Saves the report so the next session
-  starts from it instead of re-exploring the repo.
+  proof; unverified says "not checked". Important work needs fresh proof from
+  after the final change; old-session results never become current proof by
+  repetition. Saves the report so the next session starts from it instead of
+  re-exploring the repo.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
   - "Edit(~/.claude/open-steps/**)"
@@ -27,11 +29,21 @@ questions, no files touched) → one line saying so, no report.
 The language the user speaks in this session, detected from the conversation
 - translate every template label. Code, files, commands stay English.
 
-## Step 1 - gather proof that takes seconds
+## Step 1 - gather current proof
 
-Fast checks only; never re-run the test suite - use results this session
-already produced. Not confirmable in seconds, or still running → **"not
-checked"**, never "yes".
+Use quick checks first. Test results count as current proof only when they were
+produced **after the final relevant code/config change in this session**.
+Results copied from an earlier session, an old report, or a run that happened
+before the last change are context, not proof of the current state.
+
+For important or high-impact work, if no fresh post-change verification exists,
+do not manufacture confidence: report **"not checked"** and say what still
+needs to be verified before the task can be called fully done.
+
+Do not re-run a large test suite merely to make the report look complete when
+that would be expensive or inappropriate; instead state exactly what was and
+was not checked. If a targeted/current verification is already available,
+name it as the proof.
 
 ```bash
 git status --porcelain            # uncommitted?
@@ -138,6 +150,10 @@ naming an action ("review PR #892") stays; elsewhere say what it changed.
 7. Exception, do not compress: an unhandled security risk or data loss is
    spelled out plainly - in the lead and its ⚠️ row, never by inflating a
    verdict cell. A handled risk is one line: exposed what, closed how.
+8. For important work, proof must post-date the final relevant change. A
+   previous-session result or pre-change check cannot justify "fully done: yes".
+9. A "ready" verdict never authorises merge, deploy, deletion, migration or
+   another irreversible action; those still require explicit user approval.
 
 ## Known gotchas
 
@@ -150,3 +166,5 @@ naming an action ("review PR #892") stays; elsewhere say what it changed.
   is open.
 - Do not grow the table: ten rows is a wall of text in a table costume.
 - Matches none of the eight → say what happened; the list serves honesty.
+- A stale success is not a fresh success: if the last meaningful change came
+  after the check, downgrade the verification to "not checked".

@@ -6,8 +6,9 @@ description: >-
   accept one: "the session is done, check it", "can we merge it" - in any
   language. You are the receiving party: treat the report as a claim, verify
   each part against machine state, name every gap between claimed and true.
-  Verified-ready work merges in the same pass. End with what is left, one
-  next step, and any reply another session needs, ready to paste.
+  Verified-ready work is reported as ready to merge, but merge waits for an
+  explicit user command. End with what is left, one next step, and any reply
+  another session needs, ready to paste.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
   - "Bash(gh pr list *)"
@@ -16,7 +17,6 @@ allowed-tools:
   - "Bash(gh pr checks)"
   - "Bash(gh pr diff *)"
   - "Bash(gh pr diff)"
-  - "Bash(gh pr merge *)"
 ---
 
 # os-check-work
@@ -78,7 +78,7 @@ proof in 2-4 words, or what is missing>; <archive: yes / not yet>.
    | checks are green | `gh pr checks` - counts and states, not the summary word |
    | it was approved | `--json reviewDecision,latestReviews` - revocable on the same commit |
    | no open discussions | the unresolved-thread count, not "I addressed the comments" |
-   | ready to merge | `mergeStateStatus` - and again right before merging |
+   | ready to merge | `mergeStateStatus` - and again immediately before recommending merge |
    | tests were added | find them in `gh pr diff` - the most common false report |
    | it stayed in scope | `gh pr diff --name-only` vs the task; flag unasked files |
    | linked to the task | the ticket in branch, title or body |
@@ -90,15 +90,16 @@ proof in 2-4 words, or what is missing>; <archive: yes / not yet>.
 4. **Accept, hand back, or unblock.**
    - Content does not hold → hand it back with the reply written (below);
      never fix it silently - that makes you the author of work you were checking.
-   - Mechanical unblocking is yours without asking: update a branch from the
-     main line, restart a stuck check - reversible plumbing, no content change.
-   - Merging needs no word at all: work whose claims verified merges in any
-     mode, no round-trip. Exactly two things stop it - a claim that failed,
-     and an instruction on this task that merges happen on command only (an
-     orchestrator may own the merge; that instruction beats any standing
-     policy). The verification itself is never skipped.
-5. **Clean up.** Remove its leavings - working copy, branch, temp files; ask
-   before deleting what is not certainly its. Archive verdict → closing block.
+   - Mechanical unblocking is yours without asking only when it is clearly
+     reversible and does not alter user data, production state or access.
+   - **Never merge automatically.** If the work verifies, report that it is
+     ready to merge and recommend merge as the next action. Execute merge only
+     after an explicit user command in the current task, such as "merge it",
+     "мержи PR" or equivalent. "Check it", "is it ready?" and "what next?"
+     are not merge approval.
+5. **Clean up carefully.** Do not delete branches, worktrees, temp resources
+   or other state unless it is certainly disposable and the action is easy to
+   undo. Anything potentially destructive waits for explicit user approval.
 
 ## The reply is part of the pass
 
@@ -135,18 +136,19 @@ Both modes end the same way, always last, nothing after it:
   reasoning clause says so.
 - Nothing ready is a real answer - "nothing to accept yet, watch X". Never
   invent an action; a step that is not yours → say whose (`os-step-by-step`).
-- Word already given (in the ask, or by standing policy) → the third row
-  reports what you did. Pass closed everything → run `os-whats-next`.
+- Word already given explicitly in the current task → the third row reports
+  what you did. Otherwise it reports what will happen after the user's word.
+- Pass closed everything → run `os-whats-next`.
 - Never end on a question mark - you have the measurements, so the opinion.
 
 ## Hard rules
 
 1. Never repair another session's work silently - name it, return it.
 2. Never accept on the strength of the report alone; detail is not evidence.
-3. Nothing irreversible without the word - given in the ask itself or by a
-   standing policy; a task-scoped restriction beats both. Merging verified
-   work already has that policy: step 4.
-4. Re-read state immediately before acting.
+3. Nothing irreversible without explicit user approval in the current task.
+   Merge is included: verification may recommend it but never authorises it.
+4. Re-read state immediately before any recommendation that depends on current
+   PR/check/review state.
 5. Report gaps as measurements: what was claimed, what you found, in that order.
 6. Say what you could not check - no access is a gap, not absence of problems.
 7. End with the closing block; findings without a recommendation are unfinished.
@@ -155,7 +157,8 @@ Both modes end the same way, always last, nothing after it:
 
 - Behind the main line ≠ conflicted: it needs an update, not the author.
 - A conflicted branch may have run no checks: nothing-ran looks green.
-- Delete a branch only from outside its own working copy.
+- Never delete a branch merely because its PR looks done; deletion is a
+  separate cleanup action and may need approval.
 - Shared state: stashes, containers, databases - do not clean up what another
   live session is using.
 - A draft is not a finished session; check the author considers it done.

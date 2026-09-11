@@ -6,8 +6,9 @@ description: >-
   "anything I can do" - in any language. This skill picks the next piece of
   work; when the user asks HOW to do a thing or says they do not understand
   what to do, that is os-step-by-step. Reads the last report, local changes,
-  open pull requests and always the backlog. First finishes what is finished:
-  verified-ready pull requests merge in the same pass. Then sorts the rest
+  open pull requests and always the backlog. First identifies what is already
+  finished and verified; a verified-ready pull request is reported as ready
+  to merge but merge waits for explicit user approval. Then sorts the rest
   into doable-alone and needs-you, ending with one recommended next task in
   plain words - what it closes or unblocks. Never invents tasks.
 allowed-tools:
@@ -18,7 +19,6 @@ allowed-tools:
   - "Bash(gh pr checks)"
   - "Bash(gh pr diff *)"
   - "Bash(gh pr diff)"
-  - "Bash(gh pr merge *)"
 ---
 
 # os-whats-next
@@ -53,13 +53,17 @@ Stop as soon as you can answer.
 
 Say which sources you did not read: an unread source is not an empty source.
 
-## Step 2 - finish what is finished
+## Step 2 - identify what is already finished
 
-A pull request with green checks and an approval is not a decision - it is
-unfinished business. Verify it through `os-check-work`'s accept rules and
-merge it in this same pass. Two things stop the merge: a failed claim, and a
-task instruction that merges happen on command only - an orchestrator may own
-the merge. Report it as done, never as a question.
+A pull request that looks ready is still a claim. Verify it through
+`os-check-work`'s accept rules.
+
+If the PR verifies, report it as **ready to merge**. Do not merge it in this
+skill. Merge waits for an explicit user instruction in the current task, such
+as "merge it", "мержи PR" or equivalent.
+
+Requests like "what's next?", "is it ready?" or "check it" are not approval
+to merge.
 
 ## Step 3 - sort what remains into two lists
 
@@ -75,7 +79,7 @@ recommendation, not the graph.
 ## The shape - ten lines, like every report in this pack
 
 ```
-<Lead: one sentence on where things stand - including what this pass merged.>
+<Lead: one sentence on where things stand - including what is verified-ready.>
 
 **I can do alone:** <up to three items, five words of why each>
 **Needs you:** <up to three items, one line each - or drop the list>
@@ -88,8 +92,8 @@ When a quick small win and a big item are both real candidates, offer the
 choice with the native picker - two to four options, the recommended one first
 and marked; where the picker is not available, one plain sentence. On the
 pick, prepare the launch: a prompt complete enough to paste or a command
-complete enough to run, one line saying what comes out - and never run it
-yourself.
+complete enough to run, one line saying what comes out - and never run a
+new irreversible action yourself.
 
 ## How many at once
 
@@ -116,9 +120,9 @@ that as the precondition instead of assuming it.
    never padded: two real items beat five with filler.
 3. **One recommendation, always** - even when offering the small-versus-big
    choice, one option carries the mark and one line of plain-words reasoning.
-4. **Finish, then prepare - never start.** Merging a verified-ready pull
-   request is finishing. New work is prepared as a ready-to-run launch and
-   waits for the pick.
+4. **Verify, then prepare - never perform a new irreversible action.** A
+   ready PR can be recommended for merge, but merge/deploy/delete/migration
+   wait for explicit user approval.
 5. **Say what you did not check** - especially the backlog. Silence reads as
    "nothing there".
 6. **Plain words** - no engineering identifiers except where they name an
@@ -130,5 +134,6 @@ that as the precondition instead of assuming it.
 - A stale tracker is worse than none - say when you read it.
 - Draft pull requests are yours to finish, not the user's to merge.
 - A needs-you pick goes to `os-step-by-step`, never explained inline.
-- "Ready to merge" is still a claim: the verify step is what makes it true -
-  skipping it to move faster is how wrong work lands.
+- "Ready to merge" is still a claim until `os-check-work` verifies it.
+- Verification does not equal authorisation: a verified PR still waits for an
+  explicit merge command.
