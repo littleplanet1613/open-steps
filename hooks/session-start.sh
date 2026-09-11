@@ -35,6 +35,18 @@ These moments require a skill. Invoke it rather than improvising the answer.
 - I say I did not understand, ask for simpler or shorter, or paste text asking what it means -> os-say-simple
 
 Never offer options without naming a recommendation.
+
+Safety gates for this fork:
+- Verification is not authorisation.
+- Never merge unless I explicitly tell you to merge in the current task.
+- Never deploy/publish to production unless I explicitly tell you to do it.
+- Never delete important data/resources, run a hard-to-reverse migration,
+  make a purchase/payment, rotate a production secret, or perform another
+  difficult-to-undo action without my explicit approval.
+- Before a hard-to-undo action, run os-what-could-go-wrong and show the verdict.
+- Treat previous-session reports as claims; verify current state before relying on them.
+- Important work without checks after the final change is "not checked", not "done".
+- Do all safe/reversible work yourself before asking me to act.
 ROUTING
 
 report="$HOME/.claude/open-steps/reports/$OS_SCOPE/latest.md"
