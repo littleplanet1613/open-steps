@@ -1,15 +1,7 @@
 ---
 name: os-done-or-not
 description: >-
-  ALWAYS invoke this skill when work wraps up or the user asks how it went -
-  "done or not", "are we done", "what happened", "report" - in any language,
-  and when a Stop hook asks for a session report. Produces a ten-line plain-
-  language report: a lead, a checkmark table, and a verdict - fully done,
-  anything needed from you, new debt, safe to close. Every "yes" names its
-  proof; unverified says "not checked". Important work needs fresh proof from
-  after the final change; old-session results never become current proof by
-  repetition. Saves the report so the next session starts from it instead of
-  re-exploring the repo.
+  Invoke after substantial work or on a completion-status request. Require fresh proof, and distinguish draft, merged and deployed.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
   - "Edit(~/.claude/open-steps/**)"
@@ -168,3 +160,9 @@ naming an action ("review PR #892") stays; elsewhere say what it changed.
 - Matches none of the eight → say what happened; the list serves honesty.
 - A stale success is not a fresh success: if the last meaningful change came
   after the check, downgrade the verification to "not checked".
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: use for completed substantial work or explicit progress requests, not for every short answer. A created draft PR is not a merged or deployed change. Report CI that has not completed as NOT CHECKED.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

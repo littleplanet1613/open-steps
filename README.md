@@ -165,7 +165,7 @@ read: [`docs/other-agents.md`](docs/other-agents.md).
 | [`os-step-by-step`](skills/os-step-by-step/) | Numbered steps a non-technical person can follow. The agent must first try everything itself and ask only for what truly needs you | The agent needs you to run, paste, click, approve or test something |
 | [`os-ask-simple`](skills/os-ask-simple/) | The question in plain words, what it costs later, and one marked recommendation | The agent has a question or options for you |
 | [`os-what-could-go-wrong`](skills/os-what-could-go-wrong/) | Assumes the decision already failed and works backwards to find out why, in a fresh agent that had no hand in it. Ends on one verdict | Something hard to undo is about to be agreed - a contract, a purchase, a migration, a launch |
-| [`os-whats-next`](skills/os-whats-next/) | Merges what is verified and ready, then recommends the next task and says why in plain words | You ask what is left or what to do next |
+| [`os-whats-next`](skills/os-whats-next/) | Reports verified-ready changes without merging them, then recommends the next task | You ask what is left or what to do next |
 | [`os-check-work`](skills/os-check-work/) | Does not trust another session's report. Checks every claim against what actually happened, then says what to do about it | Another session says it is done |
 | [`os-say-simple`](skills/os-say-simple/) | Rewrites any text in plain words without losing facts or bad news. Give it a number and you get exactly that many points | Any text reads like engineering: a report, a comment, an error, the agent's own answer |
 
@@ -265,28 +265,23 @@ rules. Some also carry a worked example in a `references/` folder. Nothing
 runs on your machine except the two hooks, and those are plain shell scripts
 you can read in a minute.
 
-One thing to know before installing: **the pack finishes finished work by
-itself.** If a pull request has green checks and an approved review, it gets
-verified once more and merged. No asking. Whatever unblocks the most goes
-first. Only two things stop a merge: a claim that fails verification, or a
-note on the task saying merges happen on command only. Write that note
-wherever an orchestrator owns the merge; put the same note in your own
-`~/.claude/CLAUDE.md` if you never want merges happening on their own.
+**Safety rule for this fork:** the pack never merges a pull request automatically.
+Verified changes can be reported as ready to merge, but merge, deployment,
+destructive actions and production changes require explicit permission for that
+action. The same restriction is in `docs/routing-block.md` and
+`docs/SAFETY-RU.md`.
 
-And what a skill may do without asking. A skill can pre-approve tools for the
-one turn it runs in, so this pack keeps that list down to what it actually
-needs: its own reports folder, the `gh pr` calls that read a pull request, and
-`gh pr merge`, because merging finished work is the behaviour above. Nothing
-else. Every other command, and every file outside your project and that
-folder, goes through your own permission settings as usual. Reading with `git`
-needs no entry at all: Claude Code already treats read-only `git` as
-read-only.
+This fork's tool allowances only permit reading its report folder and
+inspecting pull requests. A tool permission is never authority to merge:
+the explicit user approval gate remains binding even when a CLI offers
+merge operations. Review the actual `allowed-tools` frontmatter in each
+`SKILL.md` rather than relying on the original upstream description.
 
 Three decisions shape everything here:
 
-1. **Descriptions are commands, not summaries.** Every skill opens with
-   "ALWAYS invoke this skill when…". Published measurements say this form
-   fires far more reliably than a polite description.
+1. **Descriptions define boundaries.** Each skill describes a specific user
+   intent; the Codex 6.x review narrows overlapping automatic triggers.
+   Historical Claude activation measurements do not validate the new rules.
 2. **A skill cannot force itself to run.** Anything that must hold in every
    reply lives in `CLAUDE.md` or the output style instead. The pack says
    which layer each piece belongs to.
@@ -351,3 +346,8 @@ MIT - see [LICENSE](LICENSE). © 2026 Pavlo Kharmanskyi.
 Open Steps Skills is an independent and open-source project. Claude and Claude
 Code are trademarks of Anthropic. All other trademarks are the property of their
 respective owners.
+
+
+## Codex 6.x routing review (2026-11)
+
+The seven skills retain their existing safety restrictions. Their appended Codex boundaries reduce overlapping automatic triggers on stronger models while keeping explicit invocations working. This is a routing review, **not** a new measured activation benchmark. Inspect `docs/routing-block.md` and `docs/CODEX_6_COMPATIBILITY.md`. Claude Code-specific hook tests do not establish that Codex automatically activates skills.

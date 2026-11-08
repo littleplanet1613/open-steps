@@ -1,15 +1,7 @@
 ---
 name: os-say-simple
 description: >-
-  ALWAYS invoke this skill when the user asks for simpler or shorter about
-  something said or written - "say it simply", "what does this mean", "I
-  don't understand your answer", "too long", "wait, what?", "bro" - in any
-  language, about any text: your own answer, a report, a review comment, an
-  error. "I don't understand what to DO" is os-step-by-step; this skill
-  restates text. It restates for a reader who does not read code: leads with
-  the point, keeps every number, warning and caveat - no facts added, no bad
-  news dropped. A number returns exactly that many points, most important
-  first.
+  Invoke to simplify existing text, an error or a prior explanation without changing facts. Do not take over procedural or verification requests.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
 ---
@@ -112,3 +104,9 @@ the sentences around it obey them with the term kept exact.
   Manufacturing a different version to look useful is padding.
 - **No number given, long source** - the one-screen rule from the rest of the
   pack applies: about ten lines, fifteen at the ceiling.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: use when the user wants an existing text simplified. Do not take over procedural requests (os-step-by-step), verification requests (os-check-work), or factual questions with no source text.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

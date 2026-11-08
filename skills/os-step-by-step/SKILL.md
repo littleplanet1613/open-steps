@@ -1,17 +1,7 @@
 ---
 name: os-step-by-step
 description: >-
-  ALWAYS invoke this skill when you need the user to act - run a command,
-  paste a secret, click, approve - and whenever they ask how to do something
-  or say they do not know what to do: "step by step", "walk me through it",
-  "what do I do", "what should I do", "I don't understand what to do",
-  "explain what I need to do", in any language. Picking which task comes next
-  is os-whats-next; this skill is for doing the thing in front of you. First
-  earn the ask: try it yourself, find another route, shrink it to the part
-  only they can do. Then one action per step, commands labelled by what they
-  touch, no jargon. Commands are single lines that prompt for any value -
-  typing hidden for secrets - and confirm in plain words. Afterwards verify
-  their step.
+  Invoke when concrete user action or procedural instructions are required. First do safe self-service; never request secrets in chat.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
 ---
@@ -158,3 +148,9 @@ available, write the same content as plain text.
 - If you can verify it yourself, verify it yourself; do not ask for
   confirmation you do not need.
 - "Say done" needs a subject - the user may have three of your requests open.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: invoke only when concrete user action is needed or a user requests instructions. Pure choices belong to os-ask-simple; planning the next task belongs to os-whats-next. Do not request a secret inside chat or lower an approval gate.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

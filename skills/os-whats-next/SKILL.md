@@ -1,16 +1,7 @@
 ---
 name: os-whats-next
 description: >-
-  ALWAYS invoke this skill when the user asks what to do next, what is left,
-  or what is blocked - "what's next", "what now", "what should we work on",
-  "anything I can do" - in any language. This skill picks the next piece of
-  work; when the user asks HOW to do a thing or says they do not understand
-  what to do, that is os-step-by-step. Reads the last report, local changes,
-  open pull requests and always the backlog. First identifies what is already
-  finished and verified; a verified-ready pull request is reported as ready
-  to merge but merge waits for explicit user approval. Then sorts the rest
-  into doable-alone and needs-you, ending with one recommended next task in
-  plain words - what it closes or unblocks. Never invents tasks.
+  Invoke to choose the next task based on actual backlog, state and blockers. Never merge, deploy or delete without authorization.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
   - "Bash(gh pr list *)"
@@ -137,3 +128,9 @@ that as the precondition instead of assuming it.
 - "Ready to merge" is still a claim until `os-check-work` verifies it.
 - Verification does not equal authorisation: a verified PR still waits for an
   explicit merge command.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: recommend the next action from actual state, without automatically executing a new task, merge, deployment, deletion, or payment. A ready-to-merge PR still waits for direct user approval.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

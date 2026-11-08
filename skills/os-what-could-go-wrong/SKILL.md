@@ -1,15 +1,7 @@
 ---
 name: os-what-could-go-wrong
 description: >-
-  ALWAYS invoke this skill before anything hard to undo gets agreed to - a
-  contract, a purchase, a migration, a launch, a price change, a
-  reorganisation - and whenever the user asks "what could go wrong", "what are
-  we missing", "poke holes in this", or for a premortem or a red team, in any
-  language. Assumes the decision already failed and works backwards to find
-  out why, in a fresh agent that had no hand in making it. Sweeps nine areas
-  and shows what each produced, including the empty ones. Ends on one verdict:
-  go ahead, go but fix these first, try it small first, think again, do not do
-  this.
+  Invoke before consequential hard-to-reverse decisions or for an explicit premortem. Flag missing independent review and keep approval gates.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
   - "Bash(cat ${CLAUDE_SKILL_DIR}/references/premortem-prompt.md)"
@@ -165,3 +157,9 @@ not run inline commands: open that file next to this one and use its full
 text.
 
 !`cat ${CLAUDE_SKILL_DIR}/references/premortem-prompt.md`
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: use for consequential and hard-to-reverse decisions or an explicit premortem, not for routine reversible PR preparation. If a separate agent cannot be started, say independent review NOT CHECKED and perform a clearly labeled local risk screen instead; never invent independent scrutiny.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
