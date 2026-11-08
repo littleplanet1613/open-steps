@@ -1,14 +1,7 @@
 ---
 name: os-ask-simple
 description: >-
-  ALWAYS invoke this skill before asking the user any technical question or
-  offering options, and whenever they ask to be asked in plain words - "ask
-  simple", "ask me simply", "ask me in plain words" - or ask if something is
-  worth doing or if something simpler would do, in any language. Rewrites the
-  question in plain words and always ends with one marked recommendation. A
-  structural choice first passes six checks, shown as a table: effort now,
-  simpler substitute, extra work later, lock-in, over-engineering, easy to
-  undo. Doing nothing is always weighed.
+  Invoke before a material technical choice the user must make; compare trade-offs and recommend a grounded option. Resolve incidental questions from evidence first.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
 ---

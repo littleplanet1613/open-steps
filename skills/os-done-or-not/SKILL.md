@@ -1,15 +1,7 @@
 ---
 name: os-done-or-not
 description: >-
-  ALWAYS invoke this skill when work wraps up or the user asks how it went -
-  "done or not", "are we done", "what happened", "report" - in any language,
-  and when a Stop hook asks for a session report. Produces a ten-line plain-
-  language report: a lead, a checkmark table, and a verdict - fully done,
-  anything needed from you, new debt, safe to close. Every "yes" names its
-  proof; unverified says "not checked". Important work needs fresh proof from
-  after the final change; old-session results never become current proof by
-  repetition. Saves the report so the next session starts from it instead of
-  re-exploring the repo.
+  Invoke after substantial work or on a completion-status request. Require fresh proof, and distinguish draft, merged and deployed.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
   - "Edit(~/.claude/open-steps/**)"

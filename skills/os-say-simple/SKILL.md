@@ -1,15 +1,7 @@
 ---
 name: os-say-simple
 description: >-
-  ALWAYS invoke this skill when the user asks for simpler or shorter about
-  something said or written - "say it simply", "what does this mean", "I
-  don't understand your answer", "too long", "wait, what?", "bro" - in any
-  language, about any text: your own answer, a report, a review comment, an
-  error. "I don't understand what to DO" is os-step-by-step; this skill
-  restates text. It restates for a reader who does not read code: leads with
-  the point, keeps every number, warning and caveat - no facts added, no bad
-  news dropped. A number returns exactly that many points, most important
-  first.
+  Invoke to simplify existing text, an error or a prior explanation without changing facts. Do not take over procedural or verification requests.
 allowed-tools:
   - "Read(~/.claude/open-steps/**)"
 ---
