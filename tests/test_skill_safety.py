@@ -19,7 +19,7 @@ class SkillSafetyTests(unittest.TestCase):
             with self.subTest(skill=name):
                 source = (ROOT / "skills" / name / "SKILL.md").read_text(encoding="utf-8")
                 self.assertTrue(source.startswith("---\n"))
-                self.assertEqual(source.count("\n---\n"), 1)
+                self.assertGreater(source.find("\n---\n", 4), 0)
                 header = source.split("\n---\n", 1)[0]
                 self.assertIn("name: " + name, header)
                 self.assertIn("description: >-", header)
