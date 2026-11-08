@@ -109,3 +109,9 @@ Then the recommendation, in one line, as an actual opinion.
   number that turns out wrong costs more trust than a range ever does.
 - **The user may pick the option you did not recommend.** That is the point of
   asking. Do it their way without re-arguing, and note the trade-off once.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary for stronger reasoning models: invoke only when a material user decision or technical question is actually required; answer conventional/default questions from available evidence rather than routing every incidental option. Do not replace a necessary consent step with a recommendation.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

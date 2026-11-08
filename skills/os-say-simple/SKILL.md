@@ -112,3 +112,9 @@ the sentences around it obey them with the term kept exact.
   Manufacturing a different version to look useful is padding.
 - **No number given, long source** - the one-screen rule from the rest of the
   pack applies: about ten lines, fifteen at the ceiling.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: use when the user wants an existing text simplified. Do not take over procedural requests (os-step-by-step), verification requests (os-check-work), or factual questions with no source text.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

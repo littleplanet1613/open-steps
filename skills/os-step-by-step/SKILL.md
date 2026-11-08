@@ -158,3 +158,9 @@ available, write the same content as plain text.
 - If you can verify it yourself, verify it yourself; do not ask for
   confirmation you do not need.
 - "Say done" needs a subject - the user may have three of your requests open.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: invoke only when concrete user action is needed or a user requests instructions. Pure choices belong to os-ask-simple; planning the next task belongs to os-whats-next. Do not request a secret inside chat or lower an approval gate.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

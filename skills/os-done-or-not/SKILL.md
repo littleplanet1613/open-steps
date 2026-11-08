@@ -168,3 +168,9 @@ naming an action ("review PR #892") stays; elsewhere say what it changed.
 - Matches none of the eight → say what happened; the list serves honesty.
 - A stale success is not a fresh success: if the last meaningful change came
   after the check, downgrade the verification to "not checked".
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: use for completed substantial work or explicit progress requests, not for every short answer. A created draft PR is not a merged or deployed change. Report CI that has not completed as NOT CHECKED.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

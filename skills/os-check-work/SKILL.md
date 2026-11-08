@@ -162,3 +162,9 @@ Both modes end the same way, always last, nothing after it:
 - Shared state: stashes, containers, databases - do not clean up what another
   live session is using.
 - A draft is not a finished session; check the author considers it done.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: this skill validates another session or PR. It never merges, deploys, deletes branches, or represents a green check as approval. A draft PR remains draft until the user explicitly requests promotion.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

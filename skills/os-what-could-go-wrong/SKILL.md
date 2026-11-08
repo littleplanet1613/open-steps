@@ -165,3 +165,9 @@ not run inline commands: open that file next to this one and use its full
 text.
 
 !`cat ${CLAUDE_SKILL_DIR}/references/premortem-prompt.md`
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: use for consequential and hard-to-reverse decisions or an explicit premortem, not for routine reversible PR preparation. If a separate agent cannot be started, say independent review NOT CHECKED and perform a clearly labeled local risk screen instead; never invent independent scrutiny.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

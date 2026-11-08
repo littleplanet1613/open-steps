@@ -137,3 +137,9 @@ that as the precondition instead of assuming it.
 - "Ready to merge" is still a claim until `os-check-work` verifies it.
 - Verification does not equal authorisation: a verified PR still waits for an
   explicit merge command.
+
+## Codex 6.x routing boundary (2026-11)
+
+Boundary: recommend the next action from actual state, without automatically executing a new task, merge, deployment, deletion, or payment. A ready-to-merge PR still waits for direct user approval.
+
+Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.

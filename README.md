@@ -276,7 +276,7 @@ wherever an orchestrator owns the merge; put the same note in your own
 And what a skill may do without asking. A skill can pre-approve tools for the
 one turn it runs in, so this pack keeps that list down to what it actually
 needs: its own reports folder, the `gh pr` calls that read a pull request, and
-`gh pr merge`, because merging finished work is the behaviour above. Nothing
+No merge permissions are required for the fork's safe review workflow. Existing tool declarations are not an instruction to merge without approval. Nothing
 else. Every other command, and every file outside your project and that
 folder, goes through your own permission settings as usual. Reading with `git`
 needs no entry at all: Claude Code already treats read-only `git` as
@@ -351,3 +351,8 @@ MIT - see [LICENSE](LICENSE). © 2026 Pavlo Kharmanskyi.
 Open Steps Skills is an independent and open-source project. Claude and Claude
 Code are trademarks of Anthropic. All other trademarks are the property of their
 respective owners.
+
+
+## Codex 6.x routing review (2026-11)
+
+The seven skills retain their existing safety restrictions. Their appended Codex boundaries reduce overlapping automatic triggers on stronger models while keeping explicit invocations working. This is a routing review, **not** a new measured activation benchmark. Inspect `docs/routing-block.md` and `docs/CODEX_6_COMPATIBILITY.md`. Claude Code-specific hook tests do not establish that Codex automatically activates skills.
