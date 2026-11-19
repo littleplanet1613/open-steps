@@ -1,4 +1,4 @@
-# Codex 6.x compatibility review — 2026-11-09
+# Codex 6.x compatibility review — 2026-11-19
 
 Scope: seven Open Steps skills, routing block, safety constraints and documentation.
 
@@ -16,9 +16,9 @@ The routing boundaries are targeted at reducing false triggers on stronger model
 Safety is unchanged: never merge, deploy, delete production resources, pay, rotate credentials or perform irreversible migrations without explicit user approval. Never put secrets in chat. Prior agent reports do not establish passed tests. Preserve original Claude Code hooks and routing behavior where possible.
 
 Compatibility checklist:
-- Codex CLI >= 0.153.0 for GPT-6 Astra in the companion orchestrator repository.
+- Codex CLI >= 0.166.0 for GPT-6.2 Sol and Astra in the companion Plus profile. Run `codex --version`, `codex login status` and verify both entries with `/model`. The Open Steps skill routing is model-independent.
 - Confirm each requested model is accessible to the signed-in account; plan availability is not inferred from model naming.
 - Place skill folders in `~/.agents/skills/`, and append the routing block to `~/.codex/AGENTS.md` only after reviewing existing instructions.
 - Do not overwrite `~/.codex/config.toml` or MCP configuration.
-- Run `bash hooks/test.sh` for hook integration, `python3 -m py_compile evals/score.py` for scorer syntax and Codex activation tests separately.
+- Run `python -m unittest discover -s tests -p "test_*.py"` and `python -m py_compile evals/score.py`. Run `bash hooks/test.sh` in Git Bash or WSL for the existing hooks. Run Codex activation tests separately on both 6.2 models.
 - CI failures for DCO Signed-off-by must be resolved by an authorized human contributor rather than fabricating their signature.
