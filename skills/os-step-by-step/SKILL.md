@@ -154,3 +154,7 @@ available, write the same content as plain text.
 Boundary: invoke only when concrete user action is needed or a user requests instructions. Pure choices belong to os-ask-simple; planning the next task belongs to os-whats-next. Do not request a secret inside chat or lower an approval gate.
 
 Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
+
+## CAD and survey handoffs
+
+When live CAD is blocked, reduce the handoff to the missing licensed product or confirmed launch profile. Resume checks using the exact permitted product and a test copy.

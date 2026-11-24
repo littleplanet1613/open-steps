@@ -110,3 +110,7 @@ the sentences around it obey them with the term kept exact.
 Boundary: use when the user wants an existing text simplified. Do not take over procedural requests (os-step-by-step), verification requests (os-check-work), or factual questions with no source text.
 
 Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
+
+## CAD and survey handoffs
+
+Preserve point IDs, signs, units, the coordinate or elevation system, and the distinction between measured and project values when simplifying a survey result.

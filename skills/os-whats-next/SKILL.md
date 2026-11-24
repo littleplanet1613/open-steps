@@ -134,3 +134,7 @@ that as the precondition instead of assuming it.
 Boundary: recommend the next action from actual state, without automatically executing a new task, merge, deployment, deletion, or payment. A ready-to-merge PR still waits for direct user approval.
 
 Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
+
+## CAD and survey handoffs
+
+For drawing work, prefer the smallest next action that unlocks actual acceptance evidence. Name the blocked check and the exact missing input, access or version.

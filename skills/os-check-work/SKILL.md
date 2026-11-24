@@ -161,3 +161,7 @@ Both modes end the same way, always last, nothing after it:
 Boundary: this skill validates another session or PR. It never merges, deploys, deletes branches, or represents a green check as approval. A draft PR remains draft until the user explicitly requests promotion.
 
 Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
+
+## CAD and survey handoffs
+
+For a CAD handoff, confirm the AutoCAD product/version, exact file revision, calculation inputs and actual export before accepting it.

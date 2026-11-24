@@ -108,3 +108,7 @@ Then the recommendation, in one line, as an actual opinion.
 Boundary for stronger reasoning models: invoke only when a material user decision or technical question is actually required; answer conventional/default questions from available evidence rather than routing every incidental option. Do not replace a necessary consent step with a recommendation.
 
 Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
+
+## CAD and survey handoffs
+
+For CAD decisions, name the affected drawing copy and the visible effect. Use a test copy as the recommendation when the choice concerns changing an original.

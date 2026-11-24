@@ -166,3 +166,7 @@ naming an action ("review PR #892") stays; elsewhere say what it changed.
 Boundary: use for completed substantial work or explicit progress requests, not for every short answer. A created draft PR is not a merged or deployed change. Report CI that has not completed as NOT CHECKED.
 
 Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
+
+## CAD and survey handoffs
+
+For drawings, give separate evidence for live CAD, numeric checks and visual acceptance. Give independent review its own status.
