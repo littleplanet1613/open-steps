@@ -35,3 +35,13 @@ important against current state before acting on it.
 ### Codex 6.x routing priority
 
 Use one primary skill per user intent: verification → `os-check-work`; concrete user action → `os-step-by-step`; decision → `os-ask-simple`; next task → `os-whats-next`; completion → `os-done-or-not`; rewrite → `os-say-simple`. Add `os-what-could-go-wrong` before consequential irreversible changes. Avoid forcing all seven on simple messages. The existing safety gates above remain binding even when no skill activates.
+
+### Acceptance evidence for drawings and independent review
+
+In a CAD/geodesy report, report the verified product, release and which DWG/PDF checks ran. Distinguish mathematical validation, live CAD tests and visual acceptance. For a standalone AutoCAD attachment, stop CAD operations when product, executable, launch switches, profile or instance is ambiguous. Civil 3D, its AutoCAD-like profile and Aecc are outside that scope. Apply existing authorization gates to publishing and changes to source drawings.
+
+Use standalone AutoCAD 2021 by default. AutoCAD 2018 is an explicit secondary mode. For an AutoCAD attachment, report the live application's PID, window
+handle and profile alongside the COM registration. A registered ProgID or a
+successful MCP handshake alone does not establish a live connection. For a DWG
+round trip, report the reopened file and the saved objects that were checked.
+Record PDF export and visual inspection separately.

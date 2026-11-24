@@ -163,3 +163,7 @@ text.
 Boundary: use for consequential and hard-to-reverse decisions or an explicit premortem, not for routine reversible PR preparation. If a separate agent cannot be started, say independent review NOT CHECKED and perform a clearly labeled local risk screen instead; never invent independent scrutiny.
 
 Keep all original permission, evidence, approval and safety rules above. An available model or role is not proof that it was actually invoked.
+
+## CAD and survey handoffs
+
+For hard-to-reverse CAD changes, verify the exact destination, the restorable original, and the consequences of changing source geometry or the coordinate system.
