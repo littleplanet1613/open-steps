@@ -40,8 +40,10 @@ Use one primary skill per user intent: verification → `os-check-work`; concret
 
 In a CAD/geodesy report, report the verified product, release and which DWG/PDF checks ran. Distinguish mathematical validation, live CAD tests and visual acceptance. For a standalone AutoCAD attachment, stop CAD operations when product, executable, launch switches, profile or instance is ambiguous. Civil 3D, its AutoCAD-like profile and Aecc are outside that scope. Apply existing authorization gates to publishing and changes to source drawings.
 
-Use standalone AutoCAD 2021 by default. AutoCAD 2018 is an explicit secondary mode. For an AutoCAD attachment, report the live application's PID, window
+Use only standalone AutoCAD 2021 (R24.0, AutoCAD.Application.24). Attach to a verified running instance with automatic launch disabled. For an AutoCAD attachment, report the live application's PID, window
 handle and profile alongside the COM registration. A registered ProgID or a
 successful MCP handshake alone does not establish a live connection. For a DWG
 round trip, report the reopened file and the saved objects that were checked.
 Record PDF export and visual inspection separately.
+
+Use Sol for ordinary execution, Astra for complex technical review and Terra for visual verification. Simple tasks run with one agent. Limit auxiliary agents to two at once and load only task-specific skills.
