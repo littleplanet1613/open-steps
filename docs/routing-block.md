@@ -48,4 +48,6 @@ Record PDF export and visual inspection separately.
 
 When comparing CAD batches, report operation counts, elapsed time and the measured request and response sizes for equivalent inputs. Report local plugin installation, verified MCP calls from each client, and observable account limit windows as separate evidence. Aggregate usage cannot establish the cost of an individual MCP call.
 
+Run high-volume deterministic comparisons through local scripts. Use matching work copies and send only the summary and failures to the model. A DWG/PDF release requires reopening the saved copy and inspecting the PDF actually emitted by the candidate.
+
 Use Sol for ordinary execution, Astra for complex technical review and Terra for visual verification. Simple tasks run with one agent. Limit auxiliary agents to two at once and load only task-specific skills.
