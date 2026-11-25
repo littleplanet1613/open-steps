@@ -46,4 +46,6 @@ successful MCP handshake alone does not establish a live connection. For a DWG
 round trip, report the reopened file and the saved objects that were checked.
 Record PDF export and visual inspection separately.
 
+When comparing CAD batches, report operation counts, elapsed time and the measured request and response sizes for equivalent inputs. Report local plugin installation, verified MCP calls from each client, and observable account limit windows as separate evidence. Aggregate usage cannot establish the cost of an individual MCP call.
+
 Use Sol for ordinary execution, Astra for complex technical review and Terra for visual verification. Simple tasks run with one agent. Limit auxiliary agents to two at once and load only task-specific skills.
